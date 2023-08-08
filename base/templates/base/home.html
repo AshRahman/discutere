@@ -1,3 +1,5 @@
+{%extends 'main.html'%}
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -13,6 +15,20 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
+    {%block content%}
+    <h1>Home Page</h1>
+    <div>
+      <div>
+        {% for room in rooms%}
+        <div>
+          <h4>{{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a></h4>
+          {% comment %} made mistake in curly braces {% endcomment %}
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+    {%endblock content%}
+
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
