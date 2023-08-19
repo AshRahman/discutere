@@ -16,12 +16,8 @@ def home(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    # rooms = Room.objects.all()
-    # for i in rooms:
-    #     if i["id"] == int(pk):
-    #         room = i
+    
     context = {"room": room}  # context used here as dictionary
-    # # this for loop transfers the name from the rooms dictionary to html page
 
     return render(request, "base/room.html", context)
 
