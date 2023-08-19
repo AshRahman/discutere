@@ -4,5 +4,6 @@ from django.urls import path, include # include works with views to bring the ur
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('base.urls')), #this code brings in all the url from base/urls file
-    path('room/',include('base.urls'))
+    path('room/',include('base.urls')),
+    
 ]
