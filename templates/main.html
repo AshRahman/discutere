@@ -5,6 +5,14 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
   <body>
-    {% include 'navbar.html' %} {% block content %} {% endblock %}
+    {% include 'navbar.html' %} 
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% block content %} {% endblock %}
   </body>
 </html>
