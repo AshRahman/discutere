@@ -67,7 +67,9 @@ def home(request):
 
     topics = Topic.objects.all()
     room_count = rooms.count()
-    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q)) # this makes sure that only the topic related activity is shown
+    room_messages = Message.objects.filter(
+        Q(room__topic__name__icontains=q)
+    )  # this makes sure that only the topic related activity is shown
 
     context = {
         "rooms": rooms,
@@ -99,9 +101,16 @@ def room(request, pk):
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
-    context={'user':user}
-    return render(request, 'base/profile.html',context)
-
+    rooms = user.room_set.all()
+    room_messages = user.message_set.all()
+    topics = Topic.objects.all()
+    context = {
+        "user": user,
+        "rooms": rooms,
+        "room_messages": room_messages,
+        "topics": topics,
+    }
+    return render(request, "base/profile.html", context)
 
 
 @login_required(login_url="/login")
